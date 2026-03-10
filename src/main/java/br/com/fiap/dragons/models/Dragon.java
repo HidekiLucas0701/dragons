@@ -1,8 +1,10 @@
 package br.com.fiap.dragons.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Dragon {
 
     private Integer id;
