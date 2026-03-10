@@ -7,15 +7,15 @@ import lombok.Data;
 @AllArgsConstructor
 public class Dragon {
 
-    private Integer id;
+    private Long id;
     private String nome;
     private String cor;
     private Integer poderDeFogo;
-    private Long peso;
-    private Long altura;
+    private Double peso;
+    private Double altura;
     private Boolean possuiMontador;
 
-    public Dragon(String nome, String cor, Integer poderDeFogo, Long peso, Long altura, Boolean possuiMontador) {
+    public Dragon(String nome, String cor, Integer poderDeFogo, Double peso, Double altura, Boolean possuiMontador) {
         this.nome = nome;
         this.cor = cor;
         this.poderDeFogo = poderDeFogo;
