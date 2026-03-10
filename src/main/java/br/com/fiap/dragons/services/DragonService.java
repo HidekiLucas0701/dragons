@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static java.util.Locale.filter;
-
 @Service
 public class DragonService {
 
@@ -31,12 +29,12 @@ public class DragonService {
         return dragon;
     }
 
-    public void deleteDragon(UUID id){
+    public void deleteDragonById(UUID id){
         repository.remove(findDragonById(id).get());
     }
 
     public Dragon updateDragon(UUID id, Dragon dragon){
-        deleteDragon(id);
+        deleteDragonById(id);
         dragon.setId(id);
         repository.add(dragon);
 
