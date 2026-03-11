@@ -9,7 +9,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Dragon {
 
-    private UUID id;
+    private Integer id;
     private String nome;
     private String cor;
     private Integer poderDeFogo;
