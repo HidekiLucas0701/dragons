@@ -5,10 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class DragonService {
@@ -19,7 +16,7 @@ public class DragonService {
         return repository;
     }
 
-    public Optional<Dragon> getDragonById(UUID id){
+    public Optional<Dragon> getDragonById(Integer id){
         return findDragonById(id);
     }
 
@@ -29,11 +26,11 @@ public class DragonService {
         return dragon;
     }
 
-    public void deleteDragonById(UUID id){
+    public void deleteDragonById(Integer id){
         repository.remove(findDragonById(id).get());
     }
 
-    public Dragon updateDragon(UUID id, Dragon dragon){
+    public Dragon updateDragon(Integer id, Dragon dragon){
         deleteDragonById(id);
         dragon.setId(id);
         repository.add(dragon);
@@ -41,11 +38,11 @@ public class DragonService {
         return dragon;
     }
 
-    private UUID generateId(){
-        return UUID.randomUUID();
+    private Integer generateId(){
+        return Math.abs(new Random().nextInt());
     }
 
-    private Optional<Dragon> findDragonById(UUID id){
+    private Optional<Dragon> findDragonById(Integer id){
         var optionalDragon = repository.stream()
             .filter(d -> d.getId().equals(id))
             .findFirst();

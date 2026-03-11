@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/dragons")
@@ -41,7 +40,7 @@ public class DragonController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Dragon> getDragonById(@PathVariable UUID id){
+    public ResponseEntity<Dragon> getDragonById(@PathVariable Integer id){
         log.info("Buscando dragão com id {}", id);
         var optionalDragon = service.getDragonById(id);
         if(optionalDragon.isEmpty()){
@@ -51,13 +50,13 @@ public class DragonController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteDragonById(@PathVariable UUID id){
+    public ResponseEntity<Void> deleteDragonById(@PathVariable Integer id){
         service.deleteDragonById(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Dragon> updateDragon(@PathVariable UUID id, @RequestBody Dragon dragon){
+    public ResponseEntity<Dragon> updateDragon(@PathVariable Integer id, @RequestBody Dragon dragon){
         Dragon newDragon = service.updateDragon(id, dragon);
         return ResponseEntity.ok(newDragon);
     }
